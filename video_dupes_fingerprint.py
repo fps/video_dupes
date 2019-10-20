@@ -35,7 +35,7 @@ count = 0
 for file_name in files:
     # if count == 10:
     #    break
-    print('Processing "{}"...'.format(file_name))
+    print('{} of {} ({:.2}%) - Processing "{}"...'.format(count, len(files), (100.0 * count / len(files)), file_name))
     video_capture = cv2.VideoCapture(file_name)
     if not video_capture.isOpened():
         print('Failed to open video file "{}"'.format(file_name))
