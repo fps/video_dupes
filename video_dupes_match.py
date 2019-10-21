@@ -11,7 +11,7 @@ import math
 
 parser = argparse.ArgumentParser(description="Match fingerprints", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('--input', help='A file name to read the fingerprints from', default='fingerprints.json')
-parser.add_argument('--output', help='A file name to write the match results to', default='matches.json')
+parser.add_argument('--output', help='A file name to write the sorted match results to', default='matches.json')
 
 args = parser.parse_args()
 
@@ -24,7 +24,6 @@ def distance(fingerprints1, fingerprints2):
             the_sum += pow(fingerprints1[index][channel] - fingerprints2[index][channel], 2)
     return math.sqrt(the_sum)
 
-print('Matching...')
 file_pairs = []
 distances = []
 with open(args.input) as f:
@@ -35,7 +34,7 @@ with open(args.input) as f:
             d = distance(fingerprints_map[keys[index1]], fingerprints_map[keys[index2]])
             file_pairs.append([keys[index1], keys[index2]])
             distances.append(d)
-            print('{} - {} / {}'.format(d, keys[index1], keys[index2]))
+            # print('{} - {} / {}'.format(d, keys[index1], keys[index2]))
 
 sorted_indices = list(numpy.argsort(distances))
 
