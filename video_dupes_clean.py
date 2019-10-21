@@ -25,6 +25,9 @@ with open(args.input) as f:
     matches = json.loads(f.read())
     really_done = False
     for match in matches:
+        if not (os.path.isfile(match[1]) and os.path.isfile(match[2])):
+            continue
+
         done = False
         while not done:
             print('Score: {}'.format(match[0]))
@@ -48,11 +51,11 @@ with open(args.input) as f:
                 subprocess.call([args.player, match[1]])
                 
             if x == "1":
-                trash.append(match[1])
+                trash.append(match[2])
                 done = True
 
             if x == "2":
-                trash.append(match[0])
+                trash.append(match[1])
                 done = True
 
         if really_done:
