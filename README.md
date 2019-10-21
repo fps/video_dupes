@@ -3,16 +3,24 @@
 A super braindead collection of tools to find some gross duplicates in a medium size
 collection of video files.
 
-It works by taking a couple of frames from a video file (see the --time parameter
-of the video_dupes_fingerprint.py tool) and calculates their mean RGB value.
+CAUTION: Do not trust this tool at all! It is riddled with bugs! Do not use it :)
 
-In a matching step (video_dupes_match.py)a euclidian distance is calculated by this long vector
-of RGB triplets between two videos.
+That said: It works for me..
 
-In a cleaning step (video_dupes_clean.py) the sorted output of the matching step is presented to the
-user as binary choices of which of the two videos to keep.
+- It works by taking a couple of frames from a video file (see the --time parameter
+of the video_dupes_fingerprint.py tool) and calculates their mean RGB value. This
+tool finally write a json file containing these fingerprints.
 
-The last step is reviewing the list of files to delete and finally 
+- In a matching step (video_dupes_match.py) a euclidian distance is calculated by this long vector
+of RGB triplets between all pairs of two entries in the fingerprints json file.
+The distances are sorted and a new output file is generated with the (sorted) scores
+and corresponding file names.
+
+- In a cleaning step (video_dupes_clean.py) the sorted output of the matching step is presented to the
+user as binary choices of which of the two videos to keep. The result of this step is
+a text file with file names which are to be deleted.
+
+- The last step is reviewing the list of files to delete and finally 
 deleting them (empty_trash.sh).
 
 <pre>
