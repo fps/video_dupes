@@ -4,24 +4,27 @@ A super braindead collection of tools to find some gross duplicates in a medium 
 collection of video files.
 
 CAUTION: Do not trust this tool at all! It is riddled with bugs! Do not use it :)
+ESPECIALLY be aware of what it means that we only consider pairwise matches
+if you have more than two videos that are "duplicates"!
 
 That said: It works for me..
 
-- It works by taking a couple of frames from a video file (see the --time parameter
-of the video_dupes_fingerprint.py tool) and calculates their mean RGB value. This
-tool finally write a json file containing these fingerprints.
+- In the fingerprinting step we take a couple of frames from each video file (see 
+the --time parameter of the video_dupes_fingerprint.py tool) and calculate their mean RGB values. 
+These fingerprints are finally written to a json file containing these fingerprints.
 
-- In a matching step (video_dupes_match.py) a euclidian distance is calculated by this long vector
-of RGB triplets between all pairs of two entries in the fingerprints json file.
-The distances are sorted and a new output file is generated with the (sorted) scores
+- In the matching step (video_dupes_match.py) the euclidian distance between fingerprints
+is calculated. The distances are sorted and a new output file is generated with the (sorted) scores
 and corresponding file names.
 
-- In a cleaning step (video_dupes_clean.py) the sorted output of the matching step is presented to the
+- In the cleaning step (video_dupes_clean.py) the sorted output of the matching step is presented to the
 user as binary choices of which of the two videos to keep. The result of this step is
 a text file with file names which are to be deleted.
 
 - The last step is reviewing the list of files to delete and finally 
-deleting them (empty_trash.sh).
+deleting them (empty_trash.sh). DO NOT RUN THIS CARELESSLY - REVIEW THE 
+trash.txt text file thoroughly. ./empty_trash.sh just reads the lines
+in that file and calls rm -f on each one of them.
 
 This is an example session of the files:
 
