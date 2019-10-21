@@ -1,6 +1,6 @@
 # video_dupes
 
-<code>
+<pre>
 usage: video_dupes_fingerprint.py [-h] [--path PATH [PATH ...]]
                                   [--extension EXTENSION [EXTENSION ...]]
                                   [--output OUTPUT] [--time TIME [TIME ...]]
@@ -48,4 +48,4 @@ optional arguments:
   --output OUTPUT  A file name to write filenames marked for deletion to
                    (default: trash.txt)
   --player PLAYER  A program to play a video file (default: mplayer)
-</code>
+</pre>
