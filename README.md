@@ -23,6 +23,18 @@ a text file with file names which are to be deleted.
 - The last step is reviewing the list of files to delete and finally 
 deleting them (empty_trash.sh).
 
+This is an example session of the files:
+
+<pre>
+./video_dupes_fingerprint.py --path /home/user/Downloads /media/storage/Stuff
+[...]
+./video_dupes_match.py
+[...]
+./video_dupes_clean.py
+[...interactive prompts...]
+./empty_trash.sh
+</pre>
+
 <pre>
 usage: video_dupes_fingerprint.py [-h] [--path PATH [PATH ...]]
                                   [--extension EXTENSION [EXTENSION ...]]
