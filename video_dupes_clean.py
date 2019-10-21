@@ -11,7 +11,7 @@ import math
 import subprocess
 import send2trash
 
-parser = argparse.ArgumentParser(description="Match fingerprints", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser = argparse.ArgumentParser(description="Assemble trash list", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('--input', help='A file name to read the sorted match results from', default='matches.json')
 parser.add_argument('--output', help='A file name to write filenames marked for deletion to', default='trash.txt')
 parser.add_argument('--player', help='A program to play a video file', default="mplayer")

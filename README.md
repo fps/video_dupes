@@ -74,7 +74,7 @@ optional arguments:
 usage: video_dupes_clean.py [-h] [--input INPUT] [--output OUTPUT]
                             [--player PLAYER]
 
-Match fingerprints
+Assemble trash list
 
 optional arguments:
   -h, --help       show this help message and exit
