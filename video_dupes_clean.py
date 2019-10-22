@@ -48,7 +48,7 @@ with open(args.input) as f:
 
             if x == "p":
                 subprocess.call([args.player, match[1]])
-                subprocess.call([args.player, match[1]])
+                subprocess.call([args.player, match[2]])
                 
             if x == "1":
                 trash.append(match[2])
