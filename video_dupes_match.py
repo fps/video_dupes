@@ -12,6 +12,7 @@ import math
 parser = argparse.ArgumentParser(description="Match fingerprints", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('--input', help='A file name to read the fingerprints from', default='fingerprints.json')
 parser.add_argument('--output', help='A file name to write the sorted match results to', default='matches.json')
+parser.add_argument('--threshold', help='A distance threshold above which matches are ignored', default=20.0, type=float)
 
 args = parser.parse_args()
 
@@ -32,6 +33,8 @@ with open(args.input) as f:
     for index1 in range(0, len(keys)):
         for index2 in range(index1+1, len(keys)):
             d = distance(fingerprints_map[keys[index1]], fingerprints_map[keys[index2]])
+            if d > args.threshold:
+                continue
             file_pairs.append([keys[index1], keys[index2]])
             distances.append(d)
             # print('{} - {} / {}'.format(d, keys[index1], keys[index2]))
